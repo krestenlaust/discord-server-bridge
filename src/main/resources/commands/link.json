@@ -1,0 +1,12 @@
+{
+    "name": "link",
+    "description": "Marks a channel to be linked",
+    "options": [
+        {
+            "name": "channel-id",
+            "description": "The channel ID of the channel to be linked",
+            "type": 3,
+            "required": true
+        }
+    ]
+}
