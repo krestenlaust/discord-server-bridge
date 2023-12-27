@@ -1,10 +1,16 @@
 package discordserverbridge
 
 import com.typesafe.scalalogging.Logger
+import com.typesafe.config.ConfigFactory
 
 object Main:
   val logger = Logger("Discord-Server-Bridge")
 
   @main def run(): Unit =
     logger.debug("I was compiled by Scala 3. :)")
-    val bot = new Bot("MTE4OTI2OTMzNDI5MjQ0NzMwMg.GTYaUC.2a49kh11cqggpxakqV_OksIsB9WQR78d5rKFek")
+
+    val config = ConfigFactory.load("bot.conf")
+    val bottoken = config.getString("discord.token")
+
+    val bot = new Bot(bottoken)
+    bot.start()

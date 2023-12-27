@@ -12,6 +12,7 @@ lazy val root = project
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "com.discord4j" % "discord4j-core" % "3.2.0",
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      "com.typesafe" % "config" % "1.4.3",
       "ch.qos.logback" % "logback-classic" % "1.2.10"
     )
   )
