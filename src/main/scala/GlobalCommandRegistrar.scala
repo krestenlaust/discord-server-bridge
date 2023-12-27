@@ -1,3 +1,5 @@
+package discordserverbridge
+
 import discord4j.common.JacksonResources;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import discord4j.rest.RestClient;

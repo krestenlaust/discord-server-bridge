@@ -1,4 +1,4 @@
-package commands
+package discordserverbridge.commands
 
 import reactor.core.publisher.Mono;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;

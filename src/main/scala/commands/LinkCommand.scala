@@ -1,4 +1,4 @@
-package commands
+package discordserverbridge.commands
 
 import scala.collection.JavaConverters._
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;

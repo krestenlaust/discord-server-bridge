@@ -1,22 +1,10 @@
+package discordserverbridge
+
 import com.typesafe.scalalogging.Logger
-import discord4j.core.DiscordClientBuilder;
-import discord4j.core.GatewayDiscordClient;
-import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
-import commands.SlashCommand;
 
-val logger = Logger("Discord-Server-Bridge")
+object Main:
+  val logger = Logger("Discord-Server-Bridge")
 
-@main def hello: Unit =
-  logger.debug(msg)
-
-  val client = DiscordClientBuilder.create("BOT-TOKEN")
-    .build()
-    .login()
-    .block()
-  
-  val commands = List("link.json")
-  new GlobalCommandRegistrar(client.getRestClient()).registerCommands(commands)
-  
-  client.on(classOf[ChatInputInteractionEvent], SlashCommandListener.handle)
-
-def msg = "I was compiled by Scala 3. :)"
+  @main def run(): Unit =
+    logger.debug("I was compiled by Scala 3. :)")
+    val bot = new Bot("MTE4OTI2OTMzNDI5MjQ0NzMwMg.GTYaUC.2a49kh11cqggpxakqV_OksIsB9WQR78d5rKFek")
