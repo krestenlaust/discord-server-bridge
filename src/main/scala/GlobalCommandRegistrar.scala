@@ -3,10 +3,7 @@ package discordserverbridge
 import discord4j.common.JacksonResources
 import discord4j.discordjson.json.ApplicationCommandRequest
 import discord4j.rest.RestClient
-import discord4j.rest.service.ApplicationService
-import scala.compiletime.ops.string
 import scala.io.Source
-import scala.io.BufferedSource
 import scala.collection.JavaConverters._
 import com.typesafe.scalalogging.Logger
 

@@ -1,9 +1,6 @@
 package discordserverbridge.commands
 
-import scala.collection.JavaConverters._
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
-import discord4j.core.`object`.command.ApplicationCommandInteractionOption
-import discord4j.core.`object`.command.ApplicationCommandInteractionOptionValue
 import reactor.core.publisher.Mono
 
 class LinkCommand extends SlashCommand:
