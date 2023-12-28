@@ -11,6 +11,6 @@ object SlashCommandListener:
 
   def handle(event: ChatInputInteractionEvent) =
     Flux.fromIterable(command_list.asJava)
-        .filter(cmd => cmd.getName() == event.getCommandName())
+        .filter(cmd => cmd.name == event.getCommandName())
         .next()
         .flatMap(cmd => cmd.handle(event))    

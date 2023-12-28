@@ -7,7 +7,7 @@ import discord4j.core.`object`.command.ApplicationCommandInteractionOptionValue
 import reactor.core.publisher.Mono
 
 class LinkCommand extends SlashCommand:
-  override def getName(): String = "link"
+  override def name: String = "link"
   
   override def handle(event: ChatInputInteractionEvent): Mono[Void] =
     // Reply to the slash command, with the name the user supplied
