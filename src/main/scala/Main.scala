@@ -1,7 +1,7 @@
 package discordserverbridge
 
-import com.typesafe.scalalogging.Logger
 import com.typesafe.config.ConfigFactory
+import com.typesafe.scalalogging.Logger
 
 object Main:
   val logger = Logger("Discord-Server-Bridge")

@@ -1,7 +1,7 @@
 package discordserverbridge.commands
 
-import reactor.core.publisher.Mono
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
+import reactor.core.publisher.Mono
 
 trait SlashCommand:
     def name: String

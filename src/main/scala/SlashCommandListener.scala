@@ -1,10 +1,10 @@
 package discordserverbridge
 
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import commands.{SlashCommand,LinkCommand};
-import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
-import scala.collection.JavaConverters._
+import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
+import discordserverbridge.commands.{LinkCommand, SlashCommand}
+import reactor.core.publisher.{Flux, Mono}
+
+import scala.collection.JavaConverters.*
 
 object SlashCommandListener:
   val command_list: List[SlashCommand] = List(new LinkCommand())
