@@ -12,5 +12,5 @@ class Bot(val token: String):
 
     val commands = List("link.json")
     new GlobalCommandRegistrar(client.getRestClient()).registerCommands(commands)
-    
+
     client.on(classOf[ChatInputInteractionEvent], SlashCommandListener.handle)
