@@ -14,3 +14,5 @@ class Bot(val token: String):
     new GlobalCommandRegistrar(client.getRestClient()).registerCommands(commands)
 
     client.on(classOf[ChatInputInteractionEvent], SlashCommandListener.handle)
+      .`then`(client.onDisconnect())
+      .block()
