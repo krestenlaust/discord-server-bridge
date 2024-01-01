@@ -11,12 +11,12 @@ import scala.io.Source
 class GlobalCommandRegistrar(val restClient: RestClient):
   val logger: Logger = Logger(getClass.getName)
 
-  def registerCommands(commandnames: List[String]): Unit =
-    val appService = restClient.getApplicationService()
-    val appId = restClient.getApplicationId().block()
+  def registerCommands(command_names: List[String]): Unit =
+    val appService = restClient.getApplicationService
+    val appId = restClient.getApplicationId.block()
     val d4jMapper = JacksonResources.create()
 
-    val commands = retrieveCommands(commandnames, d4jMapper)
+    val commands = retrieveCommands(command_names, d4jMapper)
 
     appService.bulkOverwriteGlobalApplicationCommand(appId, commands.asJava)
       .doOnNext(cmd => logger.debug("Registered command: " ++ cmd.name()))
@@ -24,12 +24,12 @@ class GlobalCommandRegistrar(val restClient: RestClient):
       .subscribe()
 
 
-  def retrieveCommands(commandnames: List[String], d4jMapper: JacksonResources): List[ApplicationCommandRequest] =
-    commandnames map (n => {
+  def retrieveCommands(command_names: List[String], d4jMapper: JacksonResources): List[ApplicationCommandRequest] =
+    command_names map (n => {
       val jsonContent = retrieveResourceAsString(s"commands/$n")
       d4jMapper.getObjectMapper().readValue(jsonContent, classOf[ApplicationCommandRequest])
     })
-    
+
   def retrieveResourceAsString(filename: String): String =
     Source.fromResource(filename).mkString
 

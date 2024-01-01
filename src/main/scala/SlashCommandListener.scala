@@ -11,8 +11,10 @@ object SlashCommandListener:
   val command_list: List[SlashCommand] = List(new LinkCommand())
   val logger: Logger = Logger(getClass.getName)
 
+  private val command_list: List[SlashCommand] = List(new LinkCommand(), new PingCommand())
+
   def handle(event: ChatInputInteractionEvent) =
     Flux.fromIterable(command_list.asJava)
       .filter(cmd => cmd.name == event.getCommandName())
       .next()
-      .flatMap(cmd => cmd.handle(event))    
+      .flatMap(cmd => cmd.handle(event))
