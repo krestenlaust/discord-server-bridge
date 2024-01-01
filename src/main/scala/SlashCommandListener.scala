@@ -1,5 +1,6 @@
 package discordserverbridge
 
+import com.typesafe.scalalogging.Logger
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
 import discordserverbridge.commands.{LinkCommand, SlashCommand}
 import reactor.core.publisher.{Flux, Mono}
@@ -8,6 +9,7 @@ import scala.collection.JavaConverters.*
 
 object SlashCommandListener:
   val command_list: List[SlashCommand] = List(new LinkCommand())
+  val logger: Logger = Logger(getClass.getName)
 
   def handle(event: ChatInputInteractionEvent) =
     Flux.fromIterable(command_list.asJava)

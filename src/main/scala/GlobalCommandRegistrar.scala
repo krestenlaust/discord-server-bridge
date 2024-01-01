@@ -9,7 +9,7 @@ import scala.collection.JavaConverters.*
 import scala.io.Source
 
 class GlobalCommandRegistrar(val restClient: RestClient):
-  val logger: Logger = Logger("GlobalCommandRegistrar")
+  val logger: Logger = Logger(getClass.getName)
 
   def registerCommands(commandnames: List[String]): Unit =
     val appService = restClient.getApplicationService()
