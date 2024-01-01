@@ -10,7 +10,7 @@ class Bot(val token: String):
       .login()
       .block()
 
-    val commands = List("link.json")
+    val commands = List("link.json", "ping.json")
     new GlobalCommandRegistrar(client.getRestClient()).registerCommands(commands)
 
     client.on(classOf[ChatInputInteractionEvent], SlashCommandListener.handle)
