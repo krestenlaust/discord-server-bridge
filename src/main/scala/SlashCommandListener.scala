@@ -12,7 +12,7 @@ object SlashCommandListener:
 
   private val command_list: List[SlashCommand] = List(new LinkCommand(), new PingCommand())
 
-  def handle(event: ChatInputInteractionEvent) =
+  def handle(event: ChatInputInteractionEvent): org.reactivestreams.Publisher[Object] =
     Flux.fromIterable(command_list.asJava)
       .filter(cmd => cmd.name == event.getCommandName())
       .next()
