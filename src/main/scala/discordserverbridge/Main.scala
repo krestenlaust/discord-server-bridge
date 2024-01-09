@@ -2,6 +2,7 @@ package discordserverbridge
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.Logger
+import scala.collection.JavaConverters.*
 
 object Main:
   val logger: Logger = Logger(getClass.getName)
@@ -10,7 +11,8 @@ object Main:
     logger.info("I was compiled by Scala 3. :)")
 
     val config = ConfigFactory.load("bot.conf")
-    val bottoken = config.getString("discord.token")
 
-    val bot = new Bot(bottoken)
+    val bot = new Bot(
+      config.getString("discord.token"),
+      config.getStringList("commands.metadata-filenames").asScala.toList)
     bot.start()
