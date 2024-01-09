@@ -2,6 +2,7 @@ package discordserverbridge
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.Logger
+
 import scala.collection.JavaConverters.*
 
 object Main:

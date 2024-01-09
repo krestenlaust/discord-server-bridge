@@ -2,8 +2,8 @@ package discordserverbridge.commands
 
 import discord4j.common.util.Snowflake
 import discord4j.core.`object`.entity.channel.MessageChannel
-import discordserverbridge.LinkedMessageChannelManager
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
+import discordserverbridge.LinkedMessageChannelManager
 import reactor.core.publisher.Mono
 
 class LinkCommand extends SlashCommand:
