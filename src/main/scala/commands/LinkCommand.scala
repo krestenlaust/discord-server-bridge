@@ -23,14 +23,11 @@ class LinkCommand extends SlashCommand:
           .flatMap(guild => guild.getChannelById(snowflake).cast(classOf[MessageChannel])
           .flatMap(destinationChannel => {
             event.getInteraction.getChannel.flatMap(originChannel => {
-              // Now you have a reference to the destination channel
-              // Do whatever you need with the destination channel here
-
               // Example: Reply with a message in the destination channel
               //destinationChannel.createMessage("Hello, hello there")
               LinkedMessageChannelManager.linkChannel(originChannel, destinationChannel)
               event.reply().withEphemeral(true).withContent("Successfully linked channels")
-            });
+            })
           })
         ).`then`(Mono.empty)
       case None =>
