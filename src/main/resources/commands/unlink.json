@@ -1,0 +1,12 @@
+{
+  "name": "unlink",
+  "description": "Marks a channel to unlink as destination channel",
+  "options": [
+    {
+      "name": "destination",
+      "description": "The channel ID of the channel to be unlinked",
+      "type": 3,
+      "required": true
+    }
+  ]
+}
