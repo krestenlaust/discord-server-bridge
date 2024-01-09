@@ -8,28 +8,27 @@ import discord4j.rest.RestClient
 import scala.collection.JavaConverters.*
 import scala.io.Source
 
-class GlobalCommandRegistrar(val restClient: RestClient):
+class GlobalCommandRegistrar(val restClient: RestClient, val commandsRoot: String, val metadataFilenames: List[String]):
   val logger: Logger = Logger(getClass.getName)
 
-  def registerCommands(command_names: List[String]): Unit =
+  def registerCommands(): Unit =
     val appService = restClient.getApplicationService
     val appId = restClient.getApplicationId.block()
     val d4jMapper = JacksonResources.create()
 
-    val commands = retrieveCommands(command_names, d4jMapper)
+    val commands = retrieveCommands(d4jMapper)
 
     appService.bulkOverwriteGlobalApplicationCommand(appId, commands.asJava)
       .doOnNext(cmd => logger.debug("Registered command: " ++ cmd.name()))
       .doOnError(e => logger.error("Failed to register", e))
       .subscribe()
 
-
-  def retrieveCommands(command_names: List[String], d4jMapper: JacksonResources): List[ApplicationCommandRequest] =
-    command_names map (n => {
-      val jsonContent = retrieveResourceAsString(s"commands/$n")
+  private def retrieveCommands(d4jMapper: JacksonResources): List[ApplicationCommandRequest] =
+    metadataFilenames map (n => {
+      val jsonContent = retrieveResourceAsString(s"$commandsRoot/$n")
       d4jMapper.getObjectMapper().readValue(jsonContent, classOf[ApplicationCommandRequest])
     })
 
-  def retrieveResourceAsString(filename: String): String =
-    Source.fromResource(filename).mkString
+  private def retrieveResourceAsString(filepath: String): String =
+    Source.fromResource(filepath).mkString
 

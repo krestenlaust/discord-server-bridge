@@ -12,7 +12,5 @@ object Main:
 
     val config = ConfigFactory.load("bot.conf")
 
-    val bot = new Bot(
-      config.getString("discord.token"),
-      config.getStringList("commands.metadata-filenames").asScala.toList)
+    val bot = new Bot(config)
     bot.start()
