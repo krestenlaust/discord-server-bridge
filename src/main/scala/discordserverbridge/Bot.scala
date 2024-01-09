@@ -4,13 +4,13 @@ import com.typesafe.config.Config
 import discord4j.core.DiscordClientBuilder
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent
 import discord4j.core.event.domain.message.MessageCreateEvent
-import discordserverbridge.commands.{LinkCommand, PingCommand}
+import discordserverbridge.commands.{LinkCommand, PingCommand, UnlinkCommand}
 
 import scala.collection.JavaConverters.*
 
 class Bot(config: Config):
   private val token = config.getString("discord.token")
-  private val commands = List(new LinkCommand(), new PingCommand())
+  private val commands = List(new LinkCommand(), new PingCommand(), new UnlinkCommand())
 
   def start() =
     val client = DiscordClientBuilder.create(token)
