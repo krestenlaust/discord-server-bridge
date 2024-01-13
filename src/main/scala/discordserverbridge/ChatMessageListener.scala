@@ -24,7 +24,7 @@ object ChatMessageListener:
     event.getMessage.getChannel.flatMap { (originChannel: MessageChannel) =>
       LinkedMessageChannelManager.linkedChannelByOrigin(originChannel) match
         case Some(destChannel) =>
-          destChannel.createMessage(s"${event.getMessage.getContent}")
+          destChannel.createMessage(s"${event.getMessage.getData.author().username()}: ${event.getMessage.getData.content()}")
         case None =>
           Mono.empty[Message]
     }.`then`(Mono.empty)
